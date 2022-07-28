@@ -14,4 +14,4 @@
   <%= render @room.messages %>
 </div>
 
-<%= turbo_frame_tag "new_messages", src: new_room_message_path(@room), target: "_top" %>
+<%= turbo_frame_tag "new_messages", src: new_room_message_path(@room), target: "_top", loading: "lazy" %>
