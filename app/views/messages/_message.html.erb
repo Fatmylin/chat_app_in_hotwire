@@ -1,3 +1,7 @@
 <p id="<%= dom_id message %>">
-  <%= message.created_at.to_s(:short) %>: <%= message.content %>
+  <%= turbo_frame_tag "edit_messages_#{message.id}" do%>
+    <%= message.created_at.to_s(:short) %>: <%= message.content %>
+    <%# variable room comes from message.rb:5~7 in the locals options %>
+    <%= link_to 'Edit', edit_room_message_path(@room || room, message) %>
+  <% end %>
 </p>

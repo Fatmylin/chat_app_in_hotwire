@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_room, only: %i[new create]
+  before_action :set_room, only: %i[new create edit update]
 
   def new
     @message = @room.messages.new
@@ -11,6 +11,25 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to @room }
+    end
+  end
+
+  def edit
+    @message = @room.messages.find(params[:id])
+  end
+
+  def update
+    @message = @room.messages.find(params[:id])
+
+    respond_to do |format|
+      if @message.update(message_params)
+        format.html { redirect_to room_message_url(@room, @message), notice: "Room was successfully updated." }
+        format.json { render :show, status: :ok, location: @message }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
+
     end
   end
 
