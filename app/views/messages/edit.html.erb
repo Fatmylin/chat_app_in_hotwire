@@ -4,6 +4,8 @@
     model: [@message.room, @message],
     data: { 
       controller: 'reset-form',
+      # https://turbo.hotwired.dev/handbook/drive#form-submissions
+      # Check for more form submission events
       action: 'turbo:submit-end->reset-form#reset'
     }
   ) do |form|%>
