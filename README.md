@@ -5,6 +5,7 @@
 
 ## Reference
 [Hotwire](https://turbo.hotwired.dev/handbook/introduction)
+[Hotrails](https://www.hotrails.dev/turbo-rails)
 
 ## Note
 - In the video, it empties the `create.turbo_stream.erb` to prevent duplicate render a message while in this repo the turbo seems fix the bug.
